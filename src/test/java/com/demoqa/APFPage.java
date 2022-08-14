@@ -1,6 +1,5 @@
 package com.demoqa;
 
-import com.codeborne.selenide.conditions.Text;
 import com.codeborne.selenide.selector.ByText;
 import org.openqa.selenium.Keys;
 
@@ -10,7 +9,15 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Locale;
 
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selenide.executeJavaScript;
+
 public class APFPage {
+
+    public void removeBanner() {
+        executeJavaScript("$('footer').remove()");
+        executeJavaScript("$('#fixedban').remove()");
+    }
 
     public void fillFirstName(APFData data) {
         APFElements.firstName.setValue(data.firstName);
@@ -80,21 +87,21 @@ public class APFPage {
     }
 
     public void checkEquals(APFData data) {
-        APFElements.enteredStudentName.shouldHave(new Text(data.firstName + " " + data.lastName));
-        APFElements.enteredEmail.shouldHave(new Text(data.email));
-        APFElements.enteredGender.shouldHave(new Text(data.gender));
-        APFElements.enteredMobile.shouldHave(new Text(data.mobile));
+        APFElements.enteredStudentName.shouldHave(text(data.firstName + " " + data.lastName));
+        APFElements.enteredEmail.shouldHave(text(data.email));
+        APFElements.enteredGender.shouldHave(text(data.gender));
+        APFElements.enteredMobile.shouldHave(text(data.mobile));
 
-        LocalDate date = LocalDate.parse(data.dateOfBirth, DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        LocalDate date = LocalDate.parse(data.dateOfBirth, DateTimeFormatter.ofPattern("MM.dd.yyyy"));
         String changedDateOfBirth = date.format(DateTimeFormatter.ofPattern("dd MMMM,yyyy", new Locale("en")));
-        APFElements.enteredDateOfBirth.shouldHave(new Text(changedDateOfBirth));
+        APFElements.enteredDateOfBirth.shouldHave(text(changedDateOfBirth));
 
-        APFElements.enteredSubject.shouldHave(new Text(Arrays.toString(data.subjects).replace("[", "")
+        APFElements.enteredSubject.shouldHave(text(Arrays.toString(data.subjects).replace("[", "")
                 .replace("]", "")));
 
-        APFElements.enteredHobbies.shouldHave(new Text(data.hobbies));
-        APFElements.enteredPicture.shouldHave(new Text(data.picture));
-        APFElements.enteredAddress.shouldHave(new Text(data.currentAddress));
-        APFElements.enteredStateAndCity.shouldHave(new Text(data.state + " " + data.city));
+        APFElements.enteredHobbies.shouldHave(text(data.hobbies));
+        APFElements.enteredPicture.shouldHave(text(data.picture));
+        APFElements.enteredAddress.shouldHave(text(data.currentAddress));
+        APFElements.enteredStateAndCity.shouldHave(text(data.state + " " + data.city));
     }
 }

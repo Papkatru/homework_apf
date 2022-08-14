@@ -1,17 +1,24 @@
 package com.demoqa;
 
+import com.github.javafaker.Faker;
+
+import java.text.SimpleDateFormat;
+
 public class APFData {
+    Faker faker = new Faker();
+    SimpleDateFormat dateToString = new SimpleDateFormat("MM.dd.yyyy");
+
     String[] subjects = {"Maths", "Physics", "Computer Science"};
     String
-            firstName = "Дмитрий",
-            lastName = "Тестов",
-            email = "testmail@dt.com",
+            firstName = faker.name().firstName(),
+            lastName = faker.name().lastName(),
+            email = faker.internet().emailAddress(),
             gender = "Male",
-            mobile = "9112425378",
-            dateOfBirth = "01.01.1990",
+            mobile = faker.phoneNumber().subscriberNumber(10),
+            dateOfBirth = dateToString.format(faker.date().birthday()),
             hobbies = "Music",
             picture = "test upload.jpg",
-            currentAddress = "Random street",
+            currentAddress = faker.address().streetAddress(),
             state = "NCR",
             city = "Noida";
 

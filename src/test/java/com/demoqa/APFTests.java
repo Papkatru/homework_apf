@@ -20,6 +20,7 @@ public class APFTests {
     @Test
     void fillAutomationPracticeForm() {
         open("/automation-practice-form");
+        apfPage.removeBanner();
         apfPage.fillAPFFormAndSubmit(apfForm);
         apfPage.checkEquals(apfForm);
     }
