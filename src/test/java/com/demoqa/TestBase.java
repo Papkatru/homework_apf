@@ -17,14 +17,24 @@ public class TestBase {
     static void setup() {
         SelenideLogger.addListener("allureTest", new AllureSelenide());
 
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("enableVNC", true);
-        capabilities.setCapability("enableVideo", true);
+        String browserName = System.getProperty("browser_name", "chrome");
+        String browserVersion = System.getProperty("browser_version", "105.0");
+        String browserSize = System.getProperty("browser_size", "1920x1080");
+        String remoteUrl = System.getProperty("remoteUrl");
 
-        Configuration.browserCapabilities = capabilities;
-        Configuration.browserSize = "1920x1080";
+        if (remoteUrl != null) {
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setCapability("enableVNC", true);
+            capabilities.setCapability("enableVideo", true);
+            Configuration.browserCapabilities = capabilities;
+        }
+
+        Configuration.browser = browserName;
+        Configuration.browserVersion = browserVersion;
+        Configuration.browserSize = browserSize;
         Configuration.browserPosition = "0x0";
         Configuration.baseUrl = "https://demoqa.com";
+        Configuration.remote = remoteUrl;
     }
 
     @AfterEach

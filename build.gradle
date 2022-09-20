@@ -31,7 +31,19 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
 }
 
-test {
+tasks.withType(Test) {
     useJUnitPlatform()
     systemProperties(System.getProperties())
+}
+
+task APF_test(type: Test){
+    useJUnitPlatform{
+        includeTags "APF"
+    }
+}
+
+task properties_test(type: Test){
+    useJUnitPlatform{
+        includeTags "properties"
+    }
 }

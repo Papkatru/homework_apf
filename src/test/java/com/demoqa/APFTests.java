@@ -2,10 +2,12 @@ package com.demoqa;
 
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.open;
 
+@Tag("APF")
 public class APFTests extends TestBase {
     static APFData apfForm = new APFData();
     static APFPage apfPage = new APFPage();
