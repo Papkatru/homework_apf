@@ -22,19 +22,20 @@ public class TestBase {
         String browserSize = System.getProperty("browser_size", "1920x1080");
         String remoteUrl = System.getProperty("remoteUrl");
 
+        DesiredCapabilities capabilities = new DesiredCapabilities();
         if (remoteUrl != null) {
-            DesiredCapabilities capabilities = new DesiredCapabilities();
+            Configuration.remote = remoteUrl;
             capabilities.setCapability("enableVNC", true);
             capabilities.setCapability("enableVideo", true);
-            Configuration.browserCapabilities = capabilities;
+
         }
 
+        Configuration.browserCapabilities = capabilities;
         Configuration.browser = browserName;
         Configuration.browserVersion = browserVersion;
         Configuration.browserSize = browserSize;
         Configuration.browserPosition = "0x0";
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.remote = remoteUrl;
     }
 
     @AfterEach
