@@ -23,8 +23,6 @@ public class TestBase {
         String remoteUrl = System.getProperty("remote_url");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("browserName", browserName);
-        capabilities.setCapability("browserVersion", browserVersion);
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
 
