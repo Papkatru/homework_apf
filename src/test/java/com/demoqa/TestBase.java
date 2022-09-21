@@ -22,8 +22,8 @@ public class TestBase {
         String browserSize = System.getProperty("browser_size", "1920x1080");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        if (System.getProperty("remoteUrl") != null) {
-            Configuration.remote = System.getProperty("remoteUrl");
+        if (System.getProperty("remote_url") != null) {
+            Configuration.remote = System.getProperty("remote_url");
             capabilities.setCapability("enableVNC", true);
             capabilities.setCapability("enableVideo", true);
 
