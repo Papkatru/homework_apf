@@ -20,11 +20,10 @@ public class TestBase {
         String browserName = System.getProperty("browser_name", "chrome");
         String browserVersion = System.getProperty("browser_version", "105.0");
         String browserSize = System.getProperty("browser_size", "1920x1080");
-        String remoteUrl = System.getProperty("remote_url");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        if (remoteUrl != null) {
-            Configuration.remote = remoteUrl;
+        if (System.getProperty("remoteUrl") != null) {
+            Configuration.remote = System.getProperty("remoteUrl");
             capabilities.setCapability("enableVNC", true);
             capabilities.setCapability("enableVideo", true);
 
