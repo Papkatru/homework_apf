@@ -8,7 +8,7 @@ public class PropertiesTest {
     @Test
     @Tag("properties")
     void simplePropertyTes1() {
-        String browserName = System.getProperty("browser", "firefox");
+        String browserName = System.getProperty("browser_name", "firefox");
         String browserVersion = System.getProperty("browser_version", "101");
         String browserSize = System.getProperty("browser_size", "1920x1080");
 
