@@ -1,0 +1,19 @@
+package com.demoqa.helper;
+
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
+
+public class PropertiesTest {
+
+    @Test
+    @Tag("properties")
+    void simplePropertyTes1() {
+        String browserName = System.getProperty("browser", "firefox");
+        String browserVersion = System.getProperty("browser_version", "101");
+        String browserSize = System.getProperty("browser_size", "1920x1080");
+
+        System.out.println(browserName);
+        System.out.println(browserVersion);
+        System.out.println(browserSize);
+    }
+}
