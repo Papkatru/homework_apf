@@ -18,11 +18,13 @@ public class TestBase {
         SelenideLogger.addListener("allureTest", new AllureSelenide());
 
         String browserName = System.getProperty("browser_name", "chrome");
-        String browserVersion = System.getProperty("browser_version", "100.0");
+        String browserVersion = System.getProperty("browser_version", "105.0");
         String browserSize = System.getProperty("browser_size", "1920x1080");
         String remoteUrl = System.getProperty("remote_url");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("browserName", browserName);
+        capabilities.setCapability("browserVersion", browserVersion);
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
 
