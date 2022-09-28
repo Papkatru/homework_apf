@@ -1,11 +1,11 @@
 {
   "base": {
-    "project": "My homework",
-    "environment": "Google 105.0",
+    "project": "${JOB_BASE_NAME",
+    "environment": "demoqa.com",
     "comment": "Alright",
-    "reportLink": "",
+    "reportLink": "${BUILD_URL}",
     "language": "en",
-    "allureFolder": "allure-report",
+    "allureFolder": "allure-report/",
     "enableChart": true
   },
   "telegram": {
